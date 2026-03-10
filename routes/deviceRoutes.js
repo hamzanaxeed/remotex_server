@@ -16,4 +16,18 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.get("/:userId", async (req, res) => {
+  try {
+
+    const devices = await Device.find({
+      userId: req.params.userId
+    });
+
+    res.json(devices);
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 export default router;

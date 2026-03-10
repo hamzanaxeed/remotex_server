@@ -3,11 +3,13 @@ import cors from "cors";
 import "./database.js";
 import userRoutes from "./routes/userRoutes.js";
 import deviceRoutes from "./routes/deviceRoutes.js";
+import pairRoutes from "./routes/pairRoutes.js";
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use("/users", userRoutes);
+app.use("/pair", pairRoutes);
 app.use("/devices", deviceRoutes);
 app.get("/", (req, res) => {
   res.send("Remotex backend running");
