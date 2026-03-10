@@ -1,7 +1,12 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-console.log("Mongo URI:", process.env.MONGO_URI); // should print your connection string
+dotenv.config(); // load .env here
 
-mongoose.connect(process.env.MONGO_URI)
+const mongoURI = process.env.MONGO_URI;
+
+console.log("Mongo URI:", mongoURI);
+
+mongoose.connect(mongoURI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log("MongoDB connection error:", err));
