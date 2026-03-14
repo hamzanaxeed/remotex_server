@@ -1,11 +1,13 @@
 import express from "express";
 import cors from "cors";
+import { verifyToken } from "./middleware/auth.js";
 import "./database.js";
 import userRoutes from "./routes/userRoutes.js";
 import deviceRoutes from "./routes/deviceRoutes.js";
 import pairRoutes from "./routes/pairRoutes.js";
 const app = express();
 
+app.use("/devices", verifyToken, deviceRoutes);
 app.use(cors());
 app.use(express.json());
 app.use("/users", userRoutes);
